@@ -1,0 +1,36 @@
+<h1>Ajouter Produit</h1>
+<form #produitForm="ngForm" (ngSubmit)="validerFormulaire(produitForm)">
+  <table class="table table-striped">
+    <tr>
+      <td><label for="code">Code:</label></td>
+      <td><input type="text" id="code" name="code" [(ngModel)]="produitCourant.code" required></td>
+    </tr>
+    <tr>
+      <td><label for="designation">Designation:</label></td>
+      <td><input type="text" id="designation" name="designation" [(ngModel)]="produitCourant.designation" required></td>
+    </tr>
+    <tr>
+      <td><label for="prix">Prix:</label></td>
+      <td><input type="number" id="prix" name="prix" [(ngModel)]="produitCourant.prix" required></td>
+    </tr>
+    <tr>
+      <td><label for="id">Catégorie:</label></td>
+      <td>
+        <select id="categorie" name="categorie" [(ngModel)]="produitCourant.categorie" required>
+          <option value="" disabled selected>Sélectionnez</option>
+          <option *ngFor="let categ of categ" [ngValue]="categ">
+            {{categ.id}} - {{ categ.libelle }}
+          </option>
+
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center;">
+        <button type="submit" class="btn btn-success" style="background-color: green; color: white;">
+          <span class="bi bi-plus"></span> Ajouter Produit
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
